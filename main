@@ -82,3 +82,88 @@ def get_filtered_wallets(data_file: str) -> list:
         filtered_wallets = list(filter(filter_wallets2, all_wallet_info))
         edit_dates2(filtered_wallets)
     return filtered_wallets
+
+def save_to_excel(wallets1: list, wallets2: list) -> None:
+    pretty_columns = [
+        "Ranking",
+        "User Address",
+        "Ranking Score",
+        "Transactions Count",
+        "Bridged Amount ($)",
+        "Eth Total",
+        "Stables Total",
+        "Interacted Source Chains / Destination Chains / Contracts Count",
+        "Unique Active Days / Weeks/ Months",
+        "LZ Age In Days",
+        "Initial Active Data"
+    ]
+
+    columns = list(wallets1[0].keys())
+    columns.insert(5,"eth_total")
+    columns.insert(6,"stables_total")
+
+    for wallet in wallets1:
+        for i, wallet2 in enumerate(wallets2):
+            if wallet["ua"] == wallet2["address"]:
+                break
+        else:
+            wallet["eth_total"] = 0
+            wallet["stables_total"] = 0
+            continue
+        wallet["eth_total"] = wallets2[i]["eth_total"]
+        wallet["stables_total"] = wallets2[i]["usd_total"]
+    
+    workbook = xlsxwriter.Workbook(file_excel_table)
+    worksheet = workbook.add_worksheet("Stats")
+
+    header_format = workbook.add_format({
+        'bold': True,
+        'align': 'center',
+        'valign': 'vcenter',
+        'text_wrap': True,
+        'border': 1
+    })
+    for col_num, column in enumerate(pretty_columns):
+        worksheet.write(0, col_num, column, header_format)
+
+    for row_num, wallet in enumerate(wallets1, 1):
+        for col_num, col in enumerate(columns):
+            worksheet.write(row_num, col_num, wallet[col])
+
+    worksheet.write(len(wallets1) + 3, 0, 'Donate:')
+    worksheet.write(len(wallets1) + 3, 1, '0x2e69Da32b0F7e75549F920CD2aCB0532Cc2aF0E7')
+
+    row_format = workbook.add_format({'align': 'center'})
+    sizes = [9, 45, 8, 12, 12, 13, 12, 17, 17, 8, 20]
+    for col_num, size in enumerate(sizes):
+        worksheet.set_column(col_num, col_num, size, row_format)
+
+    first_row_format = workbook.add_format({
+        'text_wrap': True,
+        'valign': 'vcenter',
+        'align': 'center',
+        'border': 1
+    })
+    worksheet.set_row(0, 60, first_row_format)
+
+    workbook.close()
+
+
+def get_execution_id(session: tls_client.Session, query_id: int) -> int:
+    with open(file_query1, 'r') as file:
+        payload = json.load(file)
+
+    payload['variables']['query_id'] = query_id
+
+    while True:
+        try:
+            response = session.post('https://core-hsr.dune.com/v1/graphql', json=payload)
+            if (response.status_code == 200):
+                break
+            else:
+                logger.error(f'Ошибка обновления базы данных: {response.text} | Cтатус запроса: {response.status_code}')
+        except Exception as error:
+            logger.error(f'Ошибка обновления базы данных: {error}')
+
+    execution_id = response.json()['data']['get_result_v3']['result_id']
+    return execution_id
