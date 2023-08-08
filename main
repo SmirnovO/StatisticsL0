@@ -167,3 +167,75 @@ def get_execution_id(session: tls_client.Session, query_id: int) -> int:
 
     execution_id = response.json()['data']['get_result_v3']['result_id']
     return execution_id
+
+
+
+def setup_session() -> tls_client.Session:
+    session = tls_client.Session(
+        client_identifier="chrome112",
+        random_tls_extension_order=True
+    )
+
+    headers = {
+        'origin': 'https://dune.com',
+        'referer': 'https://dune.com/',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
+    }
+
+    session.headers = headers
+    session.timeout_seconds = 1000
+    return session
+
+
+def update_database() -> None:
+    session = setup_session()
+
+    logger.info('Начинаю скачивание двух баз данных. Процесс может занять несколько минут...')
+
+    with open(file_query2, 'r') as file:
+        payload = json.load(file)
+
+    execution_id = get_execution_id(session, QUERY1)
+    logger.info(f'ID #1 базы данных №{QUERY1}: {execution_id}')
+    payload['variables']['execution_id'] = execution_id
+
+    while True:
+        try:
+            response = session.post('https://app-api.dune.com/v1/graphql', json=payload)
+            if (response.status_code == 200):
+                logger.success(f'База данных №{QUERY1} успешно скачана!')
+                break
+            else:
+                logger.error(f'Ошибка обновления базы данных: {response.text} | Cтатус запроса: {response.status_code}')
+        except Exception as error:
+            logger.error(f'Ошибка обновления базы данных: {error}')
+    
+    with open(file_data1, 'w') as file:
+        json.dump(response.json(), file)
+
+    #----------------------------------------------
+
+    # logger.info(f'Скачиваю вторую базу данных')
+
+    with open(file_query3, 'r') as file:
+        payload = json.load(file)
+
+    execution_id = get_execution_id(session, QUERY2)
+    logger.info(f'ID #2 базы данных №{QUERY2}: {execution_id}')
+    payload['variables']['execution_id'] = execution_id
+
+    while True:
+        try:
+            response = session.post('https://app-api.dune.com/v1/graphql', json=payload)
+            if (response.status_code == 200):
+                logger.success(f'База данных №{QUERY2} успешно скачана!')
+                break
+            else:
+                logger.error(f'Ошибка обновления базы данных: {response.text} | Cтатус запроса: {response.status_code}')
+        except Exception as error:
+            logger.error(f'Ошибка обновления базы данных: {error}')
+    
+    with open(file_data2, 'w') as file:
+        json.dump(response.json(), file)
+
+    logger.success(f'Готово!\n')
