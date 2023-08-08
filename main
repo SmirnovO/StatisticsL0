@@ -239,3 +239,65 @@ def update_database() -> None:
         json.dump(response.json(), file)
 
     logger.success(f'Готово!\n')
+
+
+def make_table() -> None:
+    exists1 = is_exists(file_data1)
+    exists2 = is_exists(file_data2)
+    if (not exists1 or not exists2):
+        logger.info('Файлы баз данных отстутствуют!')
+        update_database()
+
+    load_wallets()
+    logger.info(f'Загружено {len(WALLETS)} кошельков')
+    filtered_wallets1 = get_filtered_wallets(file_data1)
+    filtered_wallets2 = get_filtered_wallets(file_data2)
+    if (len(filtered_wallets1) == 0):
+        logger.error('Не найден ни один кошелек в базе!')
+        return
+    save_to_excel(filtered_wallets1, filtered_wallets2)
+    logger.success('Готово!\n')
+    WALLETS.clear()
+
+
+def get_action() -> str:
+    theme = {
+        "Question": {
+            "brackets_color": "bright_yellow"
+        },
+        "List": {
+            "selection_color": "bright_blue"
+        }
+    }
+
+    question = [
+        inquirer.List(
+            "action",
+            message=colored("Выберите действие", 'light_yellow'),
+            choices=["Обновить базу данных", "Составить Excel таблицу", "Выход"],
+        )
+    ]
+    action = inquirer.prompt(question, theme=loadth(theme))['action']
+    return action
+
+
+def main() -> None:
+    art = text2art(text="LAYERZERO   STATS", font="standart")
+    print(colored(art,'light_blue'))
+    print(colored('Автор: t.me/cryptogovnozavod\n','light_cyan'))
+    
+    update_database()
+    make_table()
+    
+#    while True:
+#        action = get_action()
+
+#        match action:
+#            case 'Обновить базу данных':
+#                update_database()
+#            case 'Составить Excel таблицу':
+#                make_table()
+#            case 'Выход':
+#                exit()
+#            case _:
+#                pass
