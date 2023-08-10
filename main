@@ -302,7 +302,23 @@ def main() -> None:
 #            case _:
 #                pass
 
+def mainold() -> None:
+    art = text2art(text="LAYERZERO   STATS", font="standart")
+    print(colored(art,'light_blue'))
+    print(colored('Автор: t.me/cryptogovnozavod\n','light_cyan'))
+    
+    while True:
+        action = get_action()
 
+        match action:
+            case 'Обновить базу данных':
+                update_database()
+            case 'Составить Excel таблицу':
+                make_table()
+            case 'Выход':
+                exit()
+            case _:
+                pass
 
 if (__name__ == '__main__'):
     main()
