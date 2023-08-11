@@ -34,6 +34,10 @@ def is_exists(path: str) -> bool:
     return os.path.isfile(path)
 
 
+
+def is_exists_on(path: str2) -> bool:
+    return os.path.isfile(path_on)
+
 def filter_wallets1(wallet: dict) -> bool:
     if (wallet['ua'].lower() in WALLETS):
         return True
