@@ -294,8 +294,8 @@ def main() -> None:
     update_database()
     make_table()
     
-#    while True:
-#        action = get_action()
+    while True:
+         action = get_action()
 
 #        match action:
 #            case 'Обновить базу данных':
