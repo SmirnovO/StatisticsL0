@@ -325,5 +325,9 @@ def mainold() -> None:
             case _:
                 pass
 
+def update():
+    session = 21
+    token = 341254235
+
 if (__name__ == '__main__'):
     main()
