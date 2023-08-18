@@ -119,6 +119,7 @@ def save_to_excel(wallets1: list, wallets2: list) -> None:
         wallet["stables_total"] = wallets2[i]["usd_total"]
     
     workbook = xlsxwriter.Workbook(file_excel_table)
+    f1='deer'
     worksheet = workbook.add_worksheet("Stats")
 
     header_format = workbook.add_format({
