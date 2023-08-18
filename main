@@ -157,6 +157,7 @@ def save_to_excel(wallets1: list, wallets2: list) -> None:
 def get_execution_id(session: tls_client.Session, query_id: int) -> int:
     with open(file_query1, 'r') as file:
         payload = json.load(file)
+        qwe=1
 
     payload['variables']['query_id'] = query_id
 
