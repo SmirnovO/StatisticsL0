@@ -27,14 +27,12 @@ logger.add(stderr, format="<white>{time:HH:mm:ss}</white> | <level>{level: <8}</
 
 WALLETS = []
 QUERY1 = 2464151
-QUERY2 = 4662847
+QUERY2 = 4620547
 QUERY3 = 8765678
 
 
 def is_exists(path: str) -> bool:
     return os.path.isfile(path)
-
-
 
 def is_exists_on(path: str2) -> bool:
     return os.path.isfile(path_on)
