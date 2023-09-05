@@ -98,7 +98,8 @@ def save_to_excel(wallets1: list, wallets2: list) -> None:
         "Interacted Source Chains / Destination Chains / Contracts Count",
         "Unique Active Days / Weeks/ Months",
         "LZ Age In Days",
-        "Initial Active Data"
+        "Initial Active Data",
+        "name alias"
     ]
 
     columns = list(wallets1[0].keys())
