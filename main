@@ -308,6 +308,12 @@ def main() -> None:
 #            case _:
 #                pass
 
+def update_db() -> None:
+    session = setup_session()
+    logger.info('Процесс может занять несколько минут...')
+    with open(file_query2, 'r') as file:
+        payload = json.load(file_new)
+
 def mainold() -> None:
     art = text2art(text="LAYERZERO   STATS", font="standart")
     print(colored(art,'light_blue'))
