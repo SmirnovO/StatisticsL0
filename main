@@ -10,7 +10,6 @@ from loguru import logger
 from termcolor import colored
 from inquirer.themes import load_theme_from_dict as loadth
 
-
 ### FILES SETTINGS
 cwd = os.getcwd()
 file_data1 = f'{cwd}/files/database1.json'
@@ -249,7 +248,6 @@ def update_database() -> None:
 
     logger.success(f'Готово!\n')
 
-
 def make_table() -> None:
     exists1 = is_exists(file_data1)
     exists2 = is_exists(file_data2)
@@ -289,6 +287,9 @@ def get_action() -> str:
     action = inquirer.prompt(question, theme=loadth(theme))['action']
     return action
 
+def makes_new_tables() -> None:
+    exists1 = is_exists(file_data1)
+    update_database()
 
 def main() -> None:
     art = text2art(text="LAYERZERO   STATS", font="standart")
