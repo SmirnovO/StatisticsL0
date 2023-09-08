@@ -55,6 +55,9 @@ def load_wallets() -> None:
     with open(file_wallets, 'r') as file:
         WALLETS = [row.strip().lower() for row in file]
 
+def download_wallets() -> None:
+    global WALLETS
+    WALLETS = [row.strip().lower() for row in file]
 
 def edit_dates1(wallets: list) -> None:
     for wallet in wallets:
