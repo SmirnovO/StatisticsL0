@@ -25,7 +25,7 @@ logger.remove()
 logger.add(stderr, format="<white>{time:HH:mm:ss}</white> | <level>{level: <8}</level> | <cyan>{line}</cyan> - <white>{message}</white>")
 
 WALLETS = []
-QUERY1 = 3747423
+QUERY1 = 5486893
 QUERY2 = 4620547
 QUERY3 = 8765678
 
