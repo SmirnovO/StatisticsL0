@@ -1,5 +1,6 @@
 import os
 import json
+import token
 from sys import stderr, exit
 
 import tls_client
@@ -107,6 +108,7 @@ def save_to_excel(wallets1: list, wallets2: list) -> None:
     columns = list(wallets1[0].keys())
     columns.insert(5,"eth_total")
     columns.insert(6,"stables_total")
+    columns.insert(7,"total_all")
 
     for wallet in wallets1:
         for i, wallet2 in enumerate(wallets2):
