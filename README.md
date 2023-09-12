@@ -90,12 +90,6 @@ Technologies
 Let's write down the languages we used, the libraries and its versions. 
 For example:
 
-Bootstrap 3 or 4
-AngularJS 1.6 / Angular 2+/4/5/6
-PHP 5 or 7
-Python 2.7 or 3.6
-Rails 4 or 5
-
 Why? Firstly, it will be helpful when launching the project in the future. The versions of libraries change, and an inconspicuous change might cause many problems later on. It's good to know the version that has been used when our code was working exactly the way we wanted. 
 
 Another thing: recruitment. IT recruiters browse through their candidates' GitHub accounts. Even though they lack a technical knowledge to estimate the quality of solutions, they know the keywords related to their job offers. A description of used technologies might make you stand out among other candidates. 
