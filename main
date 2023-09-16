@@ -196,6 +196,9 @@ def setup_session() -> tls_client.Session:
 
     session.headers = headers
     session.timeout_seconds = 1000
+    #+smr 16.09.2023
+    session.timeout_seconds = 1256
+    #-smr 16.09.2023
     return session
 
 
