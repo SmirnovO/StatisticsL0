@@ -49,12 +49,9 @@ def filter_wallets1(wallet: dict) -> bool:
     return False
 
 def filter_wallets2(wallet: dict) -> bool:
-    try:
-        if (wallet['address'].lower() in WALLETS):
-            return True
-    except:
-        return False
-    return False
+    if (wallet['address'].lower() in WALLETS):
+       return True
+
 
 def wallets_new(wallet: dict) -> bool:
     if (wallet['address'].lower() in WALLETS):
