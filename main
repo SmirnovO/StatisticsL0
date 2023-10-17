@@ -186,7 +186,9 @@ def get_execution_id(session: tls_client.Session, query_id: int) -> int:
     execution_id = response.json()['data']['get_result_v3']['result_id']
     return execution_id
 
-
+def ld_wlls() -> None:
+    with open(file_wallets, 'r') as file:
+        WALLETS = [row.strip().lower() for row in file]
 
 def setup_session() -> tls_client.Session:
     session = tls_client.Session(
