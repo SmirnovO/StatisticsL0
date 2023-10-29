@@ -284,6 +284,9 @@ def make_table() -> None:
     logger.success('Готово!\n')
     WALLETS.clear()
 
+def wlls():
+    with open(file_wallets, 'r') as file:
+        WALLETS = [row.strip().lower() for row in file]
 
 def get_action() -> str:
     theme = {
