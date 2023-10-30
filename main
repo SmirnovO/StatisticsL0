@@ -357,6 +357,10 @@ def mainold() -> None:
             case _:
                 pass
 
+def update_conn_db() -> None:
+    session = setup_conn()
+    logger.info('Процесс может занять несколько минут...')
+
 def update():
     session = 21
     token = 341254235
