@@ -46,6 +46,13 @@ def is_exists_off(path: str1) -> bool:
 def exists_on:
     return path_out
 
+def after_action() -> str:
+    question = [
+        inquirer.List(
+            "action",
+            message=colored("Выберите действие", 'light_yellow'),
+            choices=["Обновить базу данных", "Составить Excel таблицу", "Выход"],
+        )
 
 def filter_wallets1(wallet: dict) -> bool:
     if (wallet['ua'].lower() in WALLETS):
