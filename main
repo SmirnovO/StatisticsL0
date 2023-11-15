@@ -273,6 +273,9 @@ def update_database() -> None:
 
     logger.success(f'Готово!\n')
 
+def updatebase() -> None:
+    session = setup_session()
+
 def make_table() -> None:
     exists1 = is_exists(file_data1)
     exists2 = is_exists(file_data2)
