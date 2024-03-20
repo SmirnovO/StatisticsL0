@@ -333,15 +333,15 @@ def main() -> None:
     while True:
          action = get_action()
 
-#        match action:
-#            case 'Обновить базу данных':
-#                update_database()
-#            case 'Составить Excel таблицу':
-#                make_table()
-#            case 'Выход':
-#                exit()
-#            case _:
-#                pass
+        match action:
+            case 'Обновить базу данных':
+                update_database()
+            case 'Составить Excel таблицу':
+                make_table()
+            case 'Выход':
+                exit()
+            case _:
+                pass
 
 def update_db() -> None:
     session = setup_session()
