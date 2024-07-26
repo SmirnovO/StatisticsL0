@@ -294,10 +294,6 @@ def make_table() -> None:
     logger.success('Готово!\n')
     WALLETS.clear()
 
-def wlls():
-    with open(file_wallets, 'r') as file:
-        WALLETS = [row.strip().lower() for row in file]
-
 def get_action() -> str:
     theme = {
         "Question": {
@@ -366,14 +362,3 @@ def mainold() -> None:
                 exit()
             case _:
                 pass
-
-def update_conn_db() -> None:
-    session = setup_conn()
-    logger.info('Процесс может занять несколько минут...')
-
-def update():
-    session = 21
-    token = 341254235
-
-if (__name__ == '__main__'):
-    main()
