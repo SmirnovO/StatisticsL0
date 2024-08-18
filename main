@@ -12,7 +12,6 @@ from loguru import logger
 from termcolor import colored
 from inquirer.themes import load_theme_from_dict as loadth
 
-### FILES SETTINGS
 cwd = os.getcwd()
 file_data1 = f'{cwd}/files/database1.json'
 file_data2 = f'{cwd}/files/database2.json'
@@ -42,9 +41,6 @@ def is_exists_on(path: str2) -> bool:
 
 def is_exists_off(path: str1) -> bool:
     return os.path.isfile(path_off)
-
-def exists_on:
-    return path_out
 
 def after_action() -> str:
     question = [
