@@ -6,8 +6,6 @@ It is worth or even necessary to add a README file in every new project. Today w
 What is a README file?
 README (as the name suggests: "read me") is the first file one should read when starting a new project. It's a set of useful information about a project, and a kind of manual. A README text file appears in many various places and refers not only to programming. We will focus on a programmer's README, though. 
 
-Added README file on GitHub appears under the list of files in a repository. 
-
 If we work professionally or learn coding, many times we come across the public repositories. We use the libraries made available by other developers as an open source code or we make our contribution to a project, reporting/fixing bugs, and adding new functionalities. Certainly, we use these projects because they just come in handy, and offer a high quality solution. But would we use them if they lacked a user-friendly description, that is, a good README? 
 Rest assured - you will get to know the feeling of disappointment when finding a potential solution to all of your problems in a library or a project which description is poor, useless or isn't available whatsoever. 
 
