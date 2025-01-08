@@ -23,7 +23,6 @@ file_query5 = f'{cwd}/files/query5.json'
 file_wallets = f'{cwd}/files/wallets.txt'
 file_excel_table = f'{cwd}/LayerZero Stats_new.xlsx'
 
-# LOGGING SETTING
 logger.remove()
 logger.add(stderr, format="<white>{time:HH:mm:ss}</white> | <level>{level: <8}</level> | <cyan>{line}</cyan> - <white>{message}</white>")
 
