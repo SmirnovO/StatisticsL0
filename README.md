@@ -14,22 +14,15 @@ What's the use of writing a good README?
 I think you can guess it already. A good README is for others to understand what our code includes, and why it's noteworthy. A README file is also essential to retreive a project - on GitHub but also in browsers (e.g. Google). 
 
 I am just learning so why should I be bothered about adding a README file? That code is just for me, after all, not for the whole community.
-
 I doubt the code is just for you. And adding a README file is a good move.
-
 Show the most popular offers
-
 Node.js developer - CRIF, Krakow, Warsaw, Poznań, Wrocław, Łódź, Szczecin, Gdańsk, Bydgoszcz, Lublin
 Mid C++ Software Engineer-Video & Graphics - Evertz, Warsaw (16 000 - 26 000 PLN)
 Python Developer (Mid/Sr) Remote - Evertz, Warsaw (17 000 - 24 000 PLN)
-
 README for Junior Devs
 OK, now let's check why we should care for our README files since the first project!
-
 Even if the code is just for you, possibly you will come back to it after a while. A good README enables you to relaunch a project - without wasting your time on recalling: What was it all about? 
-
 For a budding programmer, GitHub is a calling card. The projects on GitHub are most often our portfolio. When we're at a career stage without a considerable commercial experience or nice-looking non-profit projects, a presentation of our achievements in a form of repositories is one of the best way to get visible to the recruiters. A preparation of several demonstration projects we want to show off during the interview works the best. 
-
 If we are just learning and we drop our training projects there, let's pay attention to their good description. Even a non-technical recruiter will be able to recognize the technologies we touched, and check if it goes in line with a candidate's profile he's/she's looking for.
 
 In Polish or in English?
