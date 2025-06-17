@@ -31,12 +31,8 @@ QUERY1 = 5486893
 QUERY2 = 4620547
 QUERY3 = 8765678
 
-
 def is_exists(path: str) -> bool:
     return os.path.isfile(path)
-
-def is_exists_on(path: str2) -> bool:
-    return os.path.isfile(path_on)
 
 def is_exists_off(path: str1) -> bool:
     return os.path.isfile(path_off)
